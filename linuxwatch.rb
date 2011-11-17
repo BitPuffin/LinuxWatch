@@ -24,6 +24,12 @@ module LinuxWatch::Views
 	end
 end
 
+module LinuxWatch::Helpers
+	def github(*parts)
+		JSON.parse(open("https://api.github.com/"+parts.join("/")).read)
+	end
+end
+
 module LinuxWatch::Models
 
 end
