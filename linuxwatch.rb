@@ -5,8 +5,7 @@ require 'json'
 module LinuxWatch::Controllers
 	class Index < R '/', '/home'
 		def get
-			@commits = open("https://github.com/repos/torvalds/linux/commits").read
-			@commits JSON.parse(@commits)
+			@commits = github(:repos, 'torvalds', 'linux')
 			render :home
 		end
 	end
